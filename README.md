@@ -1,2 +1,0 @@
-# SIHFreelancing
-For Freelancing Project
