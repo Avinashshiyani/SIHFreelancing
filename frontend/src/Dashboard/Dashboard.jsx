@@ -13,6 +13,9 @@ const Dashboard = () => {
         <div className="flex items-center overflow-hidden">
           <SkillCard />
         </div>
+        <div className="flex justify-start sm:px-6 lg:px-8 items-center">
+          <span className="font-bold text-[30px]">Services</span>
+        </div>
         <div className="flex justify-center items-center">
           <FreelanceServices />
         </div>
