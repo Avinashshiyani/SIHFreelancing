@@ -4,6 +4,7 @@ const mysql = require("mysql2");
 const app = express();
 const port = 3000;
 
+
 app.use(cors());
 app.use(express.json());
 
@@ -93,6 +94,48 @@ app.post("/signup/create", async (req, res) => {
   }
 });
 
+// Get User by ID for update
+app.get('/update/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [rows] = await promisePool.query("SELECT * FROM users WHERE id = ?", [id]);
+
+    if (rows.length > 0) {
+      res.json({ success: true, data: rows[0] });
+    } else {
+      res.status(404).json({ success: false, message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
+// Update User 
+app.put('/updated/:id', async(req, res) => {
+  const {id } = req.params;
+  const { firstname, lastname, role, address, country, number, email } = req.body;
+
+  try {
+    const [result] = await promisePool.query(
+      "UPDATE users SET firstname = ?, lastname = ?, role = ?, address = ?, country = ?, phone_number = ?, email = ? WHERE id = ?",
+      [firstname, lastname, role, address, country, number, email, id]
+    );
+
+    if(result.affectedRows > 0) {
+      res.json({ success: true, message: "User updated successfully" })
+    }
+    else {
+      res.status(404).json({ success: false, message: 'User not found' });
+    }
+  } catch(error) {
+      console.error('Error executing query', error)
+      res.status(500).json({ success: false, message: 'Server error' })
+  }
+})
+
 app.listen(port, () => {
   console.log(`Server running http://localhost:${port}`);
 });
+
