@@ -51,10 +51,10 @@ const Navbar = () => {
               Sign up
             </Link>
             <Link
-              to="/join"
+              to="/posts"
               className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
             >
-              Post
+              Posts
             </Link>
 
             <div className="relative">
@@ -114,10 +114,10 @@ const Navbar = () => {
             Sign up
           </Link>
           <Link
-            to="/join"
+            to="/posts"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
           >
-            Post
+            Posts
           </Link>
 
           <Link
