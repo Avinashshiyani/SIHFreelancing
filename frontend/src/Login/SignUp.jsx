@@ -37,10 +37,10 @@ const SignUp = () => {
         password,
       });
       setResponse(res.data); // Set the response data on success
-           // Check if the user was created successfully
-           if (res.data.success) {
-            navigate(res.data.redirectTo); // Redirect to the path specified in the backend response
-          }
+      // Check if the user was created successfully
+      if (res.data.success) {
+        navigate(res.data.redirectTo); // Redirect to the path specified in the backend response
+      }
     } catch (error) {
       console.error("Error sending data", error);
       if (error.response && error.response.status === 401) {
@@ -50,14 +50,14 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen   bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen  bg-gray-100">
       <div className="w-full max-w-3xl p-6 bg-white shadow-lg rounded-lg border border-gray-200">
-        <h2 className="text-3xl font-bold mb-3 text-center text-gray-900">
+        <h2 className="text-3xl font-bold mb-1 text-center text-gray-900">
           Create Your Account
         </h2>
-        <hr className="mb-6" />
+        <hr className="mb-3" />
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div>
               <label
                 htmlFor="firstname"
@@ -134,7 +134,7 @@ const SignUp = () => {
           </div>
 
           {/* Address, Country, Phone in 3 Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
             <div>
               <label
                 htmlFor="address"
@@ -254,7 +254,7 @@ const SignUp = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 px-6 font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+            className="w-full py-3 px-6 font-semibold text-white bg-primary hover:bg-hover rounded-lg  transition-colors duration-300"
           >
             Sign Up
           </button>
@@ -272,7 +272,7 @@ const SignUp = () => {
           </div>
         )}
 
-        <p className="mt-6 text-sm text-gray-500">
+        <p className="mt-4 text-sm text-gray-500">
           Already have an account?{" "}
           <Link to="/" className="text-gray-900 font-medium">
             Log In

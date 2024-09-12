@@ -39,12 +39,6 @@ const Navbar = () => {
               Dashboard
             </Link>
             <Link
-              to="/profile"
-              className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Profile
-            </Link>
-            <Link
               to="/signup"
               className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
             >
@@ -71,7 +65,7 @@ const Navbar = () => {
               {isProfileOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg">
                   <Link
-                    to="/account-settings"
+                    to="/update/1"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     Account Settings
@@ -91,7 +85,7 @@ const Navbar = () => {
 
       <div
         className={`${
-          isOpen ? "h-screen opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "h-screen opacity-100 " : "max-h-0 opacity-0"
         } overflow-hidden transition-all duration-600 ease-out bg-white `}
       >
         <nav className="px-2 pt-2 pb-4 space-y-1 sm:px-3">
@@ -100,12 +94,6 @@ const Navbar = () => {
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
           >
             Dashboard
-          </Link>
-          <Link
-            to="/profile"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
-          >
-            Profile
           </Link>
           <Link
             to="/signup"
@@ -121,7 +109,7 @@ const Navbar = () => {
           </Link>
 
           <Link
-            to="/account-settings"
+            to="/update/1"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
           >
             Account Settings
