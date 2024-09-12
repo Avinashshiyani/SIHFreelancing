@@ -30,7 +30,7 @@ app.post("/login/check", async (req, res) => {
     );
 
     if (rows.length > 0) {
-      res.json({ success: true, message: "Login Successfull", user: rows[0] });
+      res.json({ success: true, message: "Login Successfull", user: rows[0], redirectTo: '/dashboard' });
     } else {
       res.status(401).json({ success: false, message: "Invalid Credentials" });
     }
@@ -80,7 +80,7 @@ app.post("/signup/create", async (req, res) => {
       // If successful, send a success response
       res
         .status(201)
-        .json({ success: true, message: "User created successfully" });
+        .json({ success: true, message: "User created successfully", redirectTo: '/' });
     } else {
       // If not successful, send a failure response
       res

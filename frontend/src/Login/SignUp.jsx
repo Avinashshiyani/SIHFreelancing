@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Axios from "axios";
 
 const SignUp = () => {
@@ -16,6 +16,7 @@ const SignUp = () => {
   const [response, setResponse] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,12 +37,14 @@ const SignUp = () => {
         password,
       });
       setResponse(res.data); // Set the response data on success
+           // Check if the user was created successfully
+           if (res.data.success) {
+            navigate(res.data.redirectTo); // Redirect to the path specified in the backend response
+          }
     } catch (error) {
       console.error("Error sending data", error);
       if (error.response && error.response.status === 401) {
         setResponse({ message: "Invalid credentials" }); // Set error message for 401
-      } else {
-        setResponse({ message: "Failed to send data" }); // Set error message for other errors
       }
     }
   };
@@ -264,7 +267,7 @@ const SignUp = () => {
                 response.success ? "text-green-500" : "text-red-500"
               }`}
             >
-              {response.message}
+              {response.message || response.redirectTo}
             </p>
           </div>
         )}
