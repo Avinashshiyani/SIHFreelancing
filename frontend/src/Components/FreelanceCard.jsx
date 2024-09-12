@@ -1,4 +1,5 @@
 import React from "react";
+import WebImage from "../assets/webdevelopment.webp";
 
 // ServiceCard Component
 const ServiceCard = ({
@@ -49,7 +50,7 @@ const FreelanceServices = () => {
         "Creating visually appealing and user-friendly designs for web and mobile",
       image: "https://via.placeholder.com/400x200?text=UI+UX+Design",
       price: "$150",
-      profileImage: "https://via.placeholder.com/50?text=A", // Example profile image
+      profileImage: "https://via.placeholder.com/50?text=A",
       profileName: "Alice Johnson",
     },
     {
@@ -58,7 +59,7 @@ const FreelanceServices = () => {
         "Building responsive and interactive websites with modern technologies.",
       image: "https://via.placeholder.com/400x200?text=Web+Development",
       price: "$300",
-      profileImage: "https://via.placeholder.com/50?text=B", // Example profile image
+      profileImage: "https://via.placeholder.com/50?text=B",
       profileName: "Bob Smith",
     },
     {
@@ -67,19 +68,18 @@ const FreelanceServices = () => {
         "Creating stunning graphics, logos, and marketing materials technologies.",
       image: "https://via.placeholder.com/400x200?text=Graphic+Design",
       price: "$200",
-      profileImage: "https://via.placeholder.com/50?text=C", // Example profile image
+      profileImage: "https://via.placeholder.com/50?text=C",
       profileName: "Carol Davis",
     },
     {
       title: "Digital Marketing",
       description:
         "Promoting your brand through effective digital marketing strategies.",
-      image: "https://via.placeholder.com/400x200?text=Digital+Marketing",
+      image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fwebsite-design&psig=AOvVaw00wbcuu-waywZW2rUmAEDf&ust=1726136827082000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMj84fPWuogDFQAAAAAdAAAAABAE",
       price: "$250",
       profileImage: "https://via.placeholder.com/50?text=D", // Example profile image
       profileName: "David Wilson",
     },
-    // Add more services as needed
   ];
 
   return (
@@ -89,7 +89,7 @@ const FreelanceServices = () => {
           key={index}
           title={service.title}
           description={service.description}
-          image={service.image}
+          image={WebImage}
           price={service.price}
           profileImage={service.profileImage}
           profileName={service.profileName}
