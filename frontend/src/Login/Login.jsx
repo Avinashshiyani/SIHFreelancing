@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; 
-import { Link } from "react-router-dom";
+import { useNavigate ,Link } from "react-router-dom";
 import Axios from 'axios';
 
 const Login = () => {
@@ -8,6 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [response, setResponse] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +18,12 @@ const Login = () => {
         password
       });
       setResponse(res.data); // Set the response data on success
+      
+      // After successfull login redirecting to dashboard
+      if(res.data.success) {
+        navigate(res.data.redirectTo);
+      }
+
     } catch (error) {
       console.error('Error sending data', error);
       if (error.response && error.response.status === 401) {
@@ -92,7 +99,7 @@ const Login = () => {
         {response && (
           
           <div className={`my-6 text-center text-md font-bold ${response.success ? 'text-black' : 'text-red-500'}`}>
-            {response.message} !!!
+            {response.redirectTo}
           </div>
         )}
 
