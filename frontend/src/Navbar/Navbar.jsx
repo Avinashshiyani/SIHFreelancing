@@ -39,7 +39,7 @@ const Navbar = () => {
               Dashboard
             </Link>
             <Link
-              to="/profile"
+              to="/update/1"
               className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
             >
               Profile

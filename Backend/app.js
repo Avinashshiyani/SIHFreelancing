@@ -135,6 +135,19 @@ app.put('/updated/:id', async(req, res) => {
   }
 })
 
+// Fetching posts 
+app.get('/posts', async(req, res) => {
+  try {
+    const [rows] = await promisePool.query("SELECT * FROM posts")
+    if(rows.length > 0) {
+      res.json({ success: 'true', message: 'Data Fetched', data: rows })
+    }
+  } catch(error) {
+    console.error("Error querying the database:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+})
+
 app.listen(port, () => {
   console.log(`Server running http://localhost:${port}`);
 });
