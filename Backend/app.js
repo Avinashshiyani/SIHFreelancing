@@ -1,12 +1,22 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
+const session = require("express-session")
 const app = express();
 const port = 3000;
 
 
 app.use(cors());
 app.use(express.json());
+
+// Set-up session middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'mj',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: process.env.NODE_ENV === 'production' }
+}));
+
 
 // Connecting to databade
 const pool = mysql.createPool({
@@ -30,6 +40,9 @@ app.post("/login/check", async (req, res) => {
     );
 
     if (rows.length > 0) {
+      // Save user info in session
+      req.session.user = rows[0];
+
       res.json({ success: true, message: "Login Successfull", user: rows[0], redirectTo: '/dashboard' });
     } else {
       res.status(401).json({ success: false, message: "Invalid Credentials" });
@@ -39,6 +52,16 @@ app.post("/login/check", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+// Logout and destroy session
+app.post('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if(err) {
+      return res.status(500).json({ success:false, message: 'Logout failed' })
+    } 
+    res.json({ success: true, message: "Logout successful", redirectTo: '/' })
+  })
+})
 
 // Fake data fetch
 app.post("/posts", async (req, res) => {
