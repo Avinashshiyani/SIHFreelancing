@@ -241,7 +241,7 @@ let Update = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 px-6 font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+            className="w-full py-3 px-6 font-semibold text-white bg-primary rounded-lg hover:bg-hover transition-colors duration-300"
           >
             Update Profile
           </button>
