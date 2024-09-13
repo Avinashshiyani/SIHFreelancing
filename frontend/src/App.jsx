@@ -5,6 +5,7 @@ import SignUp from "./Login/SignUp";
 import Home from "./Login/Home";
 import Update from "./Login/UpdateProfile";
 import Dashboard from "./Dashboard/Dashboard";
+import Posts from "./Components/Posts";
 import DetailedView from "./Dashboard/DetailedView";
 import Navbar from "./Navbar/Navbar";
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/update/:id" element={<Update />}></Route>
         <Route path="/updated/:id" element={<Update />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/posts" element={<Posts />}></Route>
         <Route path="/dashboard/detail" element={<DetailedView />}></Route>
       </Routes>
     </Router>
