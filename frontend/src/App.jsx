@@ -7,23 +7,22 @@ import Update from "./Login/UpdateProfile";
 import Dashboard from "./Dashboard/Dashboard";
 import Posts from "./Components/Posts";
 import DetailedView from "./Dashboard/DetailedView";
-import Navbar from "./Navbar/Navbar";
+import AboutUs from "./Dashboard/AboutUs";
+import PageNotFound from "./Components/404Page";
 const App = () => {
-  // useState
-  const [data, setData] = useState();
-
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/aboutus" element={<AboutUs />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/update/:id" element={<Update />}></Route>
         <Route path="/updated/:id" element={<Update />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/posts" element={<Posts />}></Route>
         <Route path="/dashboard/detail" element={<DetailedView />}></Route>
+        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </Router>
   );

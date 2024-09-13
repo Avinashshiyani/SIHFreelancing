@@ -3,11 +3,13 @@ import SkillCard from "../Components/Card";
 import { AiOutlineSearch } from "react-icons/ai";
 import Intro from "../Components/Intro";
 import FreelanceServices from "../Components/FreelanceCard";
+import AddPostBtn from "../Components/AddPostBtn";
 
 const Dashboard = () => {
   return (
     <>
       <Navbar />
+      <AddPostBtn />
       <div className="grid items-center pt-[65px]">
         <Intro />
         <div className="flex items-center overflow-hidden">

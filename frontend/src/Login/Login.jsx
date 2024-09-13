@@ -1,35 +1,35 @@
 import React, { useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; 
-import { useNavigate ,Link } from "react-router-dom";
-import Axios from 'axios';
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useNavigate, Link } from "react-router-dom";
+import Logo from "../assets/workera_without_title_black.png";
+import Axios from "axios";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [response, setResponse] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await Axios.post('http://localhost:3000/login/check', {
+      const res = await Axios.post("http://localhost:3000/login/check", {
         email,
-        password
+        password,
       });
       setResponse(res.data); // Set the response data on success
-      
+
       // After successfull login redirecting to dashboard
-      if(res.data.success) {
+      if (res.data.success) {
         navigate(res.data.redirectTo);
       }
-
     } catch (error) {
-      console.error('Error sending data', error);
+      console.error("Error sending data", error);
       if (error.response && error.response.status === 401) {
-        setResponse({ message: 'Invalid Credentials' }); // Set error message for 401
+        setResponse({ message: "Invalid Credentials" }); // Set error message for 401
       } else {
-        setResponse({ message: 'Failed to send data' }); // Set error message for other errors
+        setResponse({ message: "Failed to send data" }); // Set error message for other errors
       }
     }
   };
@@ -37,11 +37,16 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg border border-gray-200">
-        <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
+        <div className="flex justify-center items-center">
+          <img src={Logo} alt="" className="h-[60px] w-[250px] mb-4"  />
+        </div>
+        <h2 className="text-3xl font-bold mb-4 text-center text-gray-900">
           Login
         </h2>
         <hr className="p-3" />
-        <form onSubmit={handleSubmit}> {/* Use onSubmit to handle form submission */}
+        <form onSubmit={handleSubmit}>
+          {" "}
+          {/* Use onSubmit to handle form submission */}
           <div className="mb-6">
             <label
               htmlFor="email"
@@ -74,7 +79,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)} // Update state
               required
-           />
+            />
             <button
               type="button"
               className="absolute px-3 flex items-center justify-center right-0 top-[55%]"
@@ -97,8 +102,11 @@ const Login = () => {
 
         {/* Display Response Message */}
         {response && (
-          
-          <div className={`my-6 text-center text-md font-bold ${response.success ? 'text-black' : 'text-red-500'}`}>
+          <div
+            className={`my-6 text-center text-md font-bold ${
+              response.success ? "text-black" : "text-red-500"
+            }`}
+          >
             {response.redirectTo}
           </div>
         )}
