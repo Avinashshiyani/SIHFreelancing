@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useParams, Link } from "react-router-dom";
+import Logo from "../assets/workera_without_title_black.png";
 import Axios from "axios";
 
 let Update = () => {
-
   const { id } = useParams();
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
@@ -25,7 +25,7 @@ let Update = () => {
       try {
         const response = await Axios.get(`http://localhost:3000/update/${id}`);
         const { data } = response.data;
-        console.log('API Response:', data);
+        console.log("API Response:", data);
         setFirstName(data.firstname || "");
         setLastName(data.lastname || "");
         setRole(data.role || "Buyer");
@@ -43,8 +43,7 @@ let Update = () => {
     fetchUserData();
   }, [id]);
 
-
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -66,6 +65,9 @@ let Update = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-3xl p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+        <div className="flex justify-center items-center">
+          <img src={Logo} alt="" className="h-[60px] w-[250px] mb-4" />
+        </div>
         <h2 className="text-3xl font-bold mb-3 text-center text-gray-900">
           Update Profile
         </h2>
@@ -85,7 +87,7 @@ let Update = () => {
                 id="firstname"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900"
                 placeholder="First Name"
-                value={firstname || ''}
+                value={firstname || ""}
                 onChange={(e) => setFirstName(e.target.value)}
                 required
               />
@@ -234,8 +236,6 @@ let Update = () => {
                 )}
               </button>
             </div>
-
-
           </div>
 
           {/* Submit Button */}

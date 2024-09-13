@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate, Link } from "react-router-dom";
+import Logo from "../assets/workera_without_title_black.png";
 import Axios from "axios";
 
 const SignUp = () => {
@@ -52,6 +53,9 @@ const SignUp = () => {
   return (
     <div className="flex items-center justify-center min-h-screen  bg-gray-100">
       <div className="w-full max-w-3xl p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+        <div className="flex justify-center items-center -pb-2">
+          <img src={Logo} alt="" className="h-[60px] w-[250px] mb-2" />
+        </div>
         <h2 className="text-3xl font-bold mb-1 text-center text-gray-900">
           Create Your Account
         </h2>
